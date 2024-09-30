@@ -15,17 +15,14 @@
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />     @* LOCAL LINK TO RESSOURCE *@
     <link href="_content/Heron.MudCalendar/Heron.MudCalendar.min.css" rel="stylesheet" /> @* LOCAL LINK TO RESSOURCE *@
 
-    <HeadOutlet />
+    <HeadOutlet @rendermode="InteractiveServer"/>
 </head>
 
 <body>
-    <MudThemeProvider />
-    <MudPopoverProvider />
-    <MudDialogProvider />
-    <MudSnackbarProvider />
 
-    <Routes />
-    <script type="module" src="_content/Heron.MudCalendar/Heron.MudCalendar.min.js"></script> @* LOCAL LINK TO RESSOURCE *@
+    <Routes @rendermode="InteractiveServer"/>
     <script src="_framework/blazor.web.js"></script> @* LOCAL LINK TO RESSOURCE *@
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script type="module" src="_content/Heron.MudCalendar/Heron.MudCalendar.min.js"></script> @* LOCAL LINK TO RESSOURCE *@
 </body>
 </html>

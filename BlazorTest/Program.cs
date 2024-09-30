@@ -9,14 +9,15 @@ using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMudServices();
+
 // Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+
 
 builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseInMemoryDatabase("InMemoryDb"));
 
-builder.Services.AddMudServices();
 
 // user part
 builder.Services.AddScoped<UserService>();
