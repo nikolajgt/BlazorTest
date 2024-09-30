@@ -1,8 +1,45 @@
 ﻿@page "/booking"
+@using Heron.MudCalendar
+@attribute [StreamRendering]
+
+<MudCalendar 
+    Items="_events"
+    Height="1000" 
+    EnableDragItems="true"
+    EnableResizeItems="true"
+    ItemChanged="ItemChanged" />
 
 
-<h3>CalenderBooking</h3>
 
 @code {
+    public static string __description__ = "Drag and Resize Calendar Tests";
 
+    private string _value = string.Empty;
+
+    private List<CalendarItem> _events = new()
+    {
+        new CalendarItem
+        {
+            Start = DateTime.Today.AddHours(10),
+            Text = "Event today"
+        },
+        new CalendarItem
+        {
+            Start = DateTime.Today.AddDays(1).AddHours(11),
+            End = DateTime.Today.AddDays(1).AddHours(12.5),
+            Text = "Event tomorrow"
+        },
+        new CalendarItem
+        {
+            Start = DateTime.Today.AddDays(2).AddHours(11),
+            End = DateTime.Today.AddDays(20).AddHours(12.5),
+            Text = "Event for future"
+        }
+    };
+
+    private void ItemChanged(CalendarItem item)
+    {
+        Console.WriteLine("ItemChanged");
+        _value = $"Item Changed: {item.Text}, Start: {item.Start}, End: {item.End}";
+    }
 }

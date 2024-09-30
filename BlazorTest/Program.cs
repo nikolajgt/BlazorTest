@@ -4,6 +4,7 @@ using BlazorTest.Infrastructure.Services;
 using BlazorTest.Migration;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.EntityFrameworkCore;
+using MudBlazor.Services;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseInMemoryDatabase("InMemoryDb"));
 
+builder.Services.AddMudServices();
 
 // user part
 builder.Services.AddScoped<UserService>();

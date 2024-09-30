@@ -37,7 +37,7 @@
             await UserService.LoginAsync(userName, userPassword);
         }catch(Exception ex)
         {
-            Console.WriteLine($"An error occurred: {ex.Message}");
+            _logger.LogInformation($"An error occurred: {ex.Message}");
         }
     }
 }

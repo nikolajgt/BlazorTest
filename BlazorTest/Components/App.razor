@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,12 +11,21 @@
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="BlazorTest.styles.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
+
+    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />     @* LOCAL LINK TO RESSOURCE *@
+    <link href="_content/Heron.MudCalendar/Heron.MudCalendar.min.css" rel="stylesheet" /> @* LOCAL LINK TO RESSOURCE *@
+
     <HeadOutlet />
 </head>
 
 <body>
-    <Routes />
-    <script src="_framework/blazor.web.js"></script>
-</body>
+    <MudThemeProvider />
+    <MudPopoverProvider />
+    <MudDialogProvider />
+    <MudSnackbarProvider />
 
+    <Routes />
+    <script type="module" src="_content/Heron.MudCalendar/Heron.MudCalendar.min.js"></script> @* LOCAL LINK TO RESSOURCE *@
+    <script src="_framework/blazor.web.js"></script> @* LOCAL LINK TO RESSOURCE *@
+</body>
 </html>
