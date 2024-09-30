@@ -1,0 +1,43 @@
+﻿@using System.Security.Claims
+@using BlazorTest.Infrastructure.Services
+@using Microsoft.AspNetCore.Components.Authorization;
+@using System.Security.Claims
+
+
+@page "/"
+@rendermode InteractiveServer
+@inject CustomAuthenticationService AuthService
+@inject UserService UserService
+@inject ILogger<Home> _logger
+
+
+<PageTitle>Home</PageTitle>
+<AuthorizeView>
+    <Authorized>
+        <p>Hello, @context.User.Identity?.Name!</p>
+    </Authorized>
+    <NotAuthorized>
+        <input @bind="userName" />
+        <input @bind="userPassword" />
+        <button @onclick="SignIn">Sign in</button>
+        <p>You're not authorizeds.</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+
+@code {
+    public string userName = string.Empty;
+    public string userPassword = string.Empty;
+
+    private async Task SignIn()
+    {
+        try
+        {
+            await UserService.LoginAsync(userName, userPassword);
+        }catch(Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
+}
